@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Entrar | BotTask{% endblock %}
+{% block content %}
+<main class="auth-wrap">
+    <section class="auth-card">
+        <h1>Bem-vindo de volta! 👋</h1>
+        <p class="sub">Entre na sua conta para continuar sua jornada.</p>
+        <form action="{{ url_for('login') }}" method="POST" class="formulario">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" placeholder="seu@email.com" maxlength="254" autocomplete="email" required>
+            </div>
+            <div>
+                <label for="senha">Senha</label>
+                <input id="senha" type="password" name="senha" placeholder="Sua senha" autocomplete="current-password" required>
+            </div>
+            <button type="submit">Entrar na minha conta</button>
+        </form>
+        <p class="auth-footer">Ainda não tem conta? <a class="link" href="{{ url_for('cadastro') }}">Criar cadastro</a></p>
+    </section>
+</main>
+{% endblock %}
